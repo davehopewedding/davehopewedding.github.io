@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>H5制作工具Mugeda</title>
+</head>
+<body>
+<div class="content">
+<h2><span></span>您浏览的页面不见了...</h2>
+<h4>为您推荐了其他的H5作品</h4>
+<div id="image_container"></div>
+</div>
+<script>
+	var my_array = [1,2,3,4,5,6,7,8,9];
+
+	function parseUA() {
+		var u = navigator.userAgent;
+		var u2 = navigator.userAgent.toLowerCase();
+		return { //移动终端浏览器版本信息
+			trident: u.indexOf('Trident') > -1, //IE内核
+			presto: u.indexOf('Presto') > -1, //opera内核
+			webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+			gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+			mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+			ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+			android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+			iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+			iPad: u.indexOf('iPad') > -1, //是否iPad
+			webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+			iosv: u.substr(u.indexOf('iPhone OS') + 9, 3),
+			weixin: u2.match(/MicroMessenger/i) == "micromessenger",
+			ali: u.indexOf('AliApp') > -1,
+		};
+	}
+	
+	//从一个给定的数组arr中,随机返回num个不重复项
+	function getArrayItems(arr, num) {
+	    //新建一个数组,将传入的数组复制过来,用于运算,而不要直接操作传入的数组;
+	    var temp_array = new Array();
+	    for (var index in arr) {
+	        temp_array.push(arr[index]);
+	    }
+	    //取出的数值项,保存在此数组
+	    var return_array = new Array();
+	    for (var i = 0; i<num; i++) {
+	        //判断如果数组还有可以取出的元素,以防下标越界
+	        if (temp_array.length>0) {
+	            //在数组中产生一个随机索引
+	            var arrIndex = Math.floor(Math.random()*temp_array.length);
+	            //将此随机索引的对应的数组元素值复制出来
+	            return_array[i] = temp_array[arrIndex];
+	            //然后删掉此索引的数组元素,这时候temp_array变为新的数组
+	            temp_array.splice(arrIndex, 1);
+	        } else {
+	            //数组中数据项取完后,退出循环,比如数组本来只有10项,但要求取出20项.
+	            break;
+	        }
+	    }
+	    return return_array;
+	}
+
+	function hasClass(obj, cls) {  
+	    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+	}  
+	  
+	function addClass(obj, cls) {  
+	    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+	}  
+
+
+	var ua = parseUA();
+
+	var _image_container = document.getElementById('image_container');
+
+	var innerContent = new Array();
+
+	if (ua.mobile) {
+		my_array = getArrayItems(my_array,1);
+		addClass(_image_container, 'mobile_img_fix')
+	}else{
+		my_array = getArrayItems(my_array,3);
+	}
+
+	for (i = 0; i < my_array.length; i++)
+	{
+	   innerContent.push('<img src="' + my_array[i] + '.png" alt="">');
+	}
+
+	innerContent = innerContent.toString().replace(/,/g,'');
+
+	_image_container.innerHTML = innerContent;	
+	
+	</script>
+<style>
+	.content{
+		text-align: center;
+		font-family: Microsoft Yahei, simsun;
+		min-height: 580px;
+		overflow-y: scroll;
+	}
+	.content h2,.content h3{
+		margin: 5px 0;
+	}
+	.content h2 span{
+		display: inline-block;
+		background: url(hi.jpg) center center no-repeat;
+		height: 40px;
+		width: 40px;
+		background-size: contain;
+	}
+	#image_container img{
+		margin: 0 10px;
+	}
+	.mobile_img_fix img{
+		width: 130px;
+	}
+	</style>
+</body>
+</html>
