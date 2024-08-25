@@ -36,7 +36,7 @@ _mrmcp['height'] = _mrmcp['height'] || 626;
 _mrmcp['type'] = 'smart';
 _mrmcp['title'] = '林政旭&簡語宸 婚禮邀請函';
 _mrmcp['build_number'] = parseInt('446');
-_mrmcp['publish_time'] = 'Sun Aug 25 2024 18:51:49 GMT+0800 (China Standard Time)';
+_mrmcp['publish_time'] = 'Sun Aug 25 2024 20:29:30 GMT+0800 (China Standard Time)';
 _mrmcp['last_modified'] = '';
 _mrmcp['jsapi_config_url'] = '';
 _mrmcp['stat_host'] = 'https://66cab5d431ac5952ab03860a.stat.mugeda.com/stats/c.gif';
@@ -332,7 +332,7 @@ window['Mugeda']['Loader'] = function (dom, hasScript, _mrmcp) {
             loadRes(0, resPath + "mugeda_smart_renderer_core" + version + ".js", [], 0);
         
         loadRes(0, resPath + "mugeda_utils" + version + ".js", [0]);
-        loadRes(1, jsPath + that.crid + ".js?publishTime=1724583109681", [], undefined, function(callback){
+        loadRes(1, jsPath + that.crid + ".js?publishTime=1724588970434", [], undefined, function(callback){
             var chk = function(){
                 if(Mugeda.data["id_" + that.crid]) {
                     callback();
@@ -370,7 +370,7 @@ Mugeda.Loader.prototype.start = function () {
             Mugeda.data['id_' + this.crid].wt = _mrmcp['width'];
             Mugeda.data['id_' + this.crid].ht = _mrmcp['height'];
         }
-        Mugeda['startAnimation']("id_" + this.crid, false ? "actions_" + this.crid + ".js?publishTime=1724583109681" : "", a, this.resDir, this.name, null, this._mrmcp)
+        Mugeda['startAnimation']("id_" + this.crid, false ? "actions_" + this.crid + ".js?publishTime=1724588970434" : "", a, this.resDir, this.name, null, this._mrmcp)
     }
     else {
         Mugeda.creationToBeLoad = Mugeda.creationToBeLoad || [];

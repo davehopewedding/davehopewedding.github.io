@@ -10,7 +10,7 @@ _mrmcp['height'] = _mrmcp['height'] || 626;
 _mrmcp['type'] = 'smart';
 _mrmcp['title'] = '林政旭&簡語宸 婚禮邀請函';
 _mrmcp['build_number'] = parseInt('446');
-_mrmcp['publish_time'] = 'Sun Aug 25 2024 18:51:49 GMT+0800 (China Standard Time)';
+_mrmcp['publish_time'] = 'Sun Aug 25 2024 20:29:30 GMT+0800 (China Standard Time)';
 _mrmcp['track_bot'] = 'http://cdn.mugeda.com/media/pages/track/track_20131030.html';
 _mrmcp['data_server'] = "https://weika.mugeda.com";
 })();
